@@ -1,4 +1,5 @@
 import React from 'react';
+import {CustomButton} from '../../../components/Button';
 import Input from '../../../components/Input';
 
 import {Container, Logo, Title, TitleShell} from './styles';
@@ -11,7 +12,9 @@ const Login: React.FC = () => {
         <Title>Books</Title>
       </TitleShell>
       <Input label="Email" autoCapitalize="none" keyboardType="email-address" />
-      <Input label="Senha" autoCapitalize="none" secureTextEntry />
+      <Input label="Senha" autoCapitalize="none" secureTextEntry>
+        <CustomButton loading={false} text="Entrar" />
+      </Input>
     </Container>
   );
 };
