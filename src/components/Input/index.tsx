@@ -20,4 +20,4 @@ const Input: React.FC<IInput> = ({children, label, ...rest}) => {
   );
 };
 
-export default Input;
+export {Input};

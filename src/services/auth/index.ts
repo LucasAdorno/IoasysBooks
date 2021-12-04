@@ -9,10 +9,13 @@ interface ISignInCredentials {
 
 export const SignIn = async (user: ISignInCredentials): Promise<void> => {
   try {
-    const data = await api.post('auth/sign-in', user);
+    const {headers} = await api.post('auth/sign-in', user);
 
-    // await AsyncStorage.setItem('@IOASYS:token', authorization);
-    // await AsyncStorage.setItem('@IOASYS:refreshToken', refreshToken);
+    await AsyncStorage.setItem('@IOASYS:token', headers['authorization']);
+    await AsyncStorage.setItem(
+      '@IOASYS:refreshToken',
+      headers['refresh-token'],
+    );
 
     return Promise.resolve();
   } catch (error) {

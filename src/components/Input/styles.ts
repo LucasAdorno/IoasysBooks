@@ -18,7 +18,7 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  flex: 1;
+  width: 65%;
   height: 100%;
 `;
 
