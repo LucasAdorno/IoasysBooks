@@ -1,10 +1,21 @@
 import styled from 'styled-components/native';
-import theme from '../../styles/theme';
 
 export const Container = styled.TouchableOpacity`
-  width: 100%;
-  height: 60px;
+  flex: 1;
+  height: 46px;
 
-  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 32px;
   border: 1px solid ${({theme}) => theme.colors.vine};
+
+  background-color: ${({theme}) => theme.colors.white_background};
+`;
+
+export const Title = styled.Text`
+  font-family: 'Heebo-Medium';
+  font-size: 18px;
+
+  color: ${({theme}) => theme.colors.vine};
 `;
