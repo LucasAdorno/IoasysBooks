@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {CustomButton} from '../../../components/Button';
+import {CustomButton} from '../../../components/CustomButton';
 import {Input} from '../../../components/Input';
 
 import {SignIn} from '../../../services/auth';
