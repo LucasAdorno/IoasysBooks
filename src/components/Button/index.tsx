@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, ActivityIndicator} from 'react-native';
+import {ActivityIndicator, TouchableOpacityProps} from 'react-native';
 import {useTheme} from 'styled-components';
 
 import {Container, Title} from './styles';
 
-interface ICustomButton extends Partial<typeof TouchableOpacity> {
+interface ICustomButton extends TouchableOpacityProps {
   text: string;
   loading: boolean;
 }
