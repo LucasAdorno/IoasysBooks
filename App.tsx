@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, StatusBar, Platform} from 'react-native';
 
 import {useTheme, ThemeProvider} from 'styled-components';
-import {Login} from './src/screens/auth/Login';
+import {Routes} from './src/routes';
 
 import theme from './src/styles/theme';
 
@@ -24,7 +24,7 @@ const ApplicationContent = () => {
           barStyle="dark-content"
           backgroundColor={colorsOfTheme.background}
         />
-        <Login />
+        <Routes />
       </SafeAreaView>
     </>
   );
