@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import {Alert} from 'react-native';
+
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import {CustomButton} from '../../../components/CustomButton';
 import {Input} from '../../../components/Input';
@@ -7,11 +11,17 @@ import {SignIn} from '../../../services/auth';
 
 import {Container, Logo, Title, TitleShell} from './styles';
 
+import {RootStackParamList} from '../../../routes';
+
+type loginScreenProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
+
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const {navigate} = useNavigation<loginScreenProp>();
 
   const handleSignIn = async () => {
     try {
@@ -21,11 +31,17 @@ const Login: React.FC = () => {
         password,
       });
 
+      setLoading(false);
+
+      navigate('Home');
+
       return Promise.resolve();
     } catch (err) {
-      return Promise.reject(err);
-    } finally {
       setLoading(false);
+
+      Alert.alert('Credenciais inválidas');
+
+      return Promise.reject(err);
     }
   };
 

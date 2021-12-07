@@ -1,13 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, StatusBar, Platform} from 'react-native';
 
 import {useTheme, ThemeProvider} from 'styled-components';
 import {Routes} from './src/routes';
+import {TokenRefresh} from './src/services/auth';
 
 import theme from './src/styles/theme';
 
 const ApplicationContent = () => {
   const {colors: colorsOfTheme} = useTheme();
+
+  useEffect(() => {
+    (async () => {
+      await TokenRefresh();
+    })();
+
+    setInterval(TokenRefresh, 90000);
+  });
 
   return (
     <>
