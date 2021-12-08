@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {SafeAreaView, StatusBar, Platform} from 'react-native';
 
 import {useTheme, ThemeProvider} from 'styled-components';
@@ -10,11 +10,13 @@ import theme from './src/styles/theme';
 const ApplicationContent = () => {
   const {colors: colorsOfTheme} = useTheme();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     (async () => {
       await TokenRefresh();
     })();
+  }, []);
 
+  useEffect(() => {
     setInterval(TokenRefresh, 90000);
   });
 

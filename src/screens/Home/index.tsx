@@ -13,6 +13,8 @@ import {Container, CustomFlatList} from './styles';
 const Home: React.FC = () => {
   const [books, setBooks] = useState<BookDTO[]>({} as BookDTO[]);
   const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const listBooks = async () => {
     try {
@@ -31,7 +33,7 @@ const Home: React.FC = () => {
 
   const handleFilter = async (e: string) => {
     try {
-      const {data} = await getBooks(1, ``, e);
+      const {data} = await getBooks(1, '', e);
       setBooks(data);
 
       return Promise.resolve();
