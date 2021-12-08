@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {Alert} from 'react-native';
+import React, {useLayoutEffect, useState} from 'react';
+import {Alert, AsyncStorage} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 import {CustomButton} from '../../../components/CustomButton';
 import {Input} from '../../../components/Input';
@@ -22,6 +23,17 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const {navigate} = useNavigation<loginScreenProp>();
+
+  useLayoutEffect(() => {
+    (async () => {
+      const token = await AsyncStorageLib.getItem('@IOASYS:token');
+
+      if (token) {
+        return navigate('Home');
+      }
+      return 0;
+    })();
+  });
 
   const handleSignIn = async () => {
     try {

@@ -16,7 +16,7 @@ const Routes: React.FC = () => {
 
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+      <Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
         <Screen name="Login" component={Login} />
         <Screen name="Home" component={Home} />
         <Screen name="InternalBook" component={InternalBook} />
